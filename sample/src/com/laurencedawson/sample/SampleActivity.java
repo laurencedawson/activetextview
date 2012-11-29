@@ -32,7 +32,7 @@ public class SampleActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		// Create a new ActiveTextView programatically
 		// You can also add it to a layout file by adding <com.laurencedawson.ActiveTextView />
 		ActiveTextView activeTextView = new ActiveTextView(this);
@@ -44,12 +44,14 @@ public class SampleActivity extends Activity {
 			public void onClick(String url) {
 				// Decide what to do when a link is clicked.
 				// (This is useful if you want to open an in app-browser)
-				Intent i = new Intent(Intent.ACTION_VIEW);
-				i.setData(Uri.parse(url));
-				startActivity(i);
+				if(url!=null){
+					Intent i = new Intent(Intent.ACTION_VIEW);
+					i.setData(Uri.parse(url));
+					startActivity(i);
+				}
 			}
 		});
-		
+
 		// Set a long pressed link listener (required if you want to show the additional 
 		// options menu when links are long pressed)
 		activeTextView.setLongPressedLinkListener(new OnLongPressedLinkListener() {
@@ -58,7 +60,7 @@ public class SampleActivity extends Activity {
 				Toast.makeText(SampleActivity.this, "Long pressed", Toast.LENGTH_SHORT).show();
 			}
 		}, false);
-		
+
 		// Set the ActiveTextView as the content view
 		setContentView(activeTextView);
 	}

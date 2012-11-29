@@ -48,7 +48,7 @@ public class ActiveTextView extends TextView {
 		super(context, attrs);
 		setup();
 	}
-	
+
 	public ActiveTextView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		setup();
@@ -59,7 +59,7 @@ public class ActiveTextView extends TextView {
 	private SpannableStringBuilder mSpannable;
 	private ActiveTextView.OnLinkClickedListener mListener;
 	private ActiveTextView.OnLongPressedLinkListener mLongPressedLinkListener;
-	
+
 	private void setup(){
 		mSpannable = new SpannableStringBuilder();
 		// Set the movement method
@@ -97,9 +97,11 @@ public class ActiveTextView extends TextView {
 									if(mListener!=null)
 										mListener.onClick(mUrl);
 									else{
-										Intent i = new Intent(Intent.ACTION_VIEW);
-										i.setData(Uri.parse(mUrl));
-										getContext().startActivity(i);
+										if(mUrl!=null){
+											Intent i = new Intent(Intent.ACTION_VIEW);
+											i.setData(Uri.parse(mUrl));
+											getContext().startActivity(i);
+										}
 									}
 								}
 								Selection.removeSelection(buffer);
