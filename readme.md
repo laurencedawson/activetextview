@@ -1,6 +1,6 @@
 # ActiveTextView
 
-ActiveTextView is a view designed to add additional options for links within TextViews. 
+ActiveTextView is a view designed to add additional options for links within a TextView.
 
 ## Usage
 
